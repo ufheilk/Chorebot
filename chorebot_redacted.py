@@ -79,8 +79,11 @@ def get_latest_email():
     print 'in get_latest_email'
     try:
 
+		# select inbox
         MAIL.select('inbox')
         garbage, data = MAIL.search(None, 'ALL')
+
+		# get most recent
         mail_ids = data[0]
         id_list = mail_ids.split()
         if len(id_list) == 0:
