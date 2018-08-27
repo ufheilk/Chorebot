@@ -7,13 +7,7 @@ import chores
 import person
 from collection import Messager, Mailbox
 
-def random_dumbass_greeting():
-    return random.choice(["Hi", "Hey", "Ayy", "Ahoy", "Buongiorno", "Hello", "What's up, ATTENTION"])
-
-# for each additional time a chore isn't completed, send an angrier message
-def anger_message(num_failed):
-    anger = '>'*num_failed
-    return 'You did not do your chore ' + anger + ':\\'
+from helpers import anger_message
 
 # sleep until this time
 def sleep_until(time):
@@ -75,7 +69,7 @@ for person in people:
 for chore in chores:
     if chore.active:
         person = chore.person
-        msg = chore.chore_msg(random_dumbass_greeting())
+        msg = chore.chore_msg()
         threading.Thread(target=send_timed_message, args=(person, person.time(), accountability_msg).start())
     
 # chorebot now enters its eternal slumber (until 10, that is)
