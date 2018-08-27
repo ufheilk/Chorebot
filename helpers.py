@@ -25,7 +25,8 @@ def serialize_chores(chores,filename):
 		json.dump(obj,f)
 
 def get_random_greeting():
-    random_greetings = ["Howdy","Buenas Dias","Sup fuckhead","Hey ballgobbler","Good'day",
+    random_greetings = ["Howdy","Buenas Dias","Sup fuckhead","Hey
+	ballgobbler","Good'day",'Aloha', 'Suh','Praise Data',
                         "Eat my ballsack","Hi", "Hey", "Ayy", "Ahoy", "Buongiorno", "Hello", "What's up, ATTENTION"]
     return random.choice(random_greetings)
 

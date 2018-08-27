@@ -3,6 +3,8 @@ import random
 import json
 from chore_assignments import CHORES_TO_PEOPLE
 
+from helpers import get_random_greeting
+
 CHORE_OPTIONS = (
 'kitchen','sweeping/mopping','trash','general pickup','recycling'
 )
