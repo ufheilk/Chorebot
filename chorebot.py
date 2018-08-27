@@ -95,5 +95,11 @@ check_mail(people)
 
 for person in people:
     if not person.chore_done:
-        send_message('
+        # commence scolding
+        send_message(person, anger_message(person.failure))
+        person.failure += 1
+
+# serialize everything to a file
+serialize_people(people, 'people.json')
+serialize_chores(chores, 'chores.json')
 
