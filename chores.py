@@ -19,6 +19,14 @@ CHORE_FREQUENCIES = {
 
 class Chore:
 
+    def update_chore(self):
+        ''' Sets the new due date and updates the person assigned
+            to the chore '''
+        pass
+
+    def update_date(self):
+        pass
+
     def update_person(self):
         people = CHORES_TO_PEOPLE[self.person]
         index = people.index(self.person)
