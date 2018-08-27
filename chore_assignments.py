@@ -6,4 +6,4 @@ CHORES_TO_PEOPLE = {
     'general pickup' : ['nate','lucy']
 }
 
-PEOPLE_TO_CHORES = {v: k for k, v in CHORES_TO_PEOPLE.items()}
+# PEOPLE_TO_CHORES = {v: k for k, v in CHORES_TO_PEOPLE.items()}

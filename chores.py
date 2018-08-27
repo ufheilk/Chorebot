@@ -17,9 +17,13 @@ CHORE_FREQUENCIES = {
 
 def get_random_greeting():
     random_greetings = ["Howdy","Buenas Dias","Sup fuckhead","Hey ballgobbler","Good'day",
-                        "Eat my ballsack"]
+                        "Eat my ballsack","Hi", "Hey", "Ayy", "Ahoy", "Buongiorno", "Hello", "What's up, ATTENTION"]
     return random.choice(random_greetings)
 
+# for each additional time a chore isn't completed, send an angrier message
+def anger_message(num_failed):
+    anger = '>'*num_failed
+    return 'You did not do your chore ' + anger + ':\\'
 
 class Chore:
 
@@ -46,9 +50,11 @@ class Chore:
             Returns a custom dictionary representation of the 
             chore, to use to convert the chore to json
         '''
-        ret = { 'chore'             :   self.chore,
+        next_day = self.next_active_day.strftime('%d/%m/%y')
+        ret = { 
+                'chore'             :   self.chore,
                 'chore_frequency'   :   self.chore_frequency, 
-                'next_active_day'   :   self.next_active_day,
+                'next_active_day'   :   next_day,
                 'person'            :   self.person
               }
         return ret
@@ -62,11 +68,3 @@ class Chore:
     def chore_message(self):
         return "{} {}, please do your chore: {}".format(get_random_greeting(),self.person,self.chore)
 
-def initialize_chores(filename):
-    with open(filename) as f_obj:
-        chores = json.load(f_obj)
-        return chores
-
-for chore in initialize_chores('chores.json'):
-    tmp = Chore.from_dict(chore)
-    print(tmp.chore_message())

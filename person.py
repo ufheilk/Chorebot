@@ -1,20 +1,37 @@
-import datetime	
+import datetime
+
 class Person:
-	
-	def __init__(self):
-		self.name = name
-		self.phone_email = phone_email
-		self.chore = chore
-		self.chore_index = chore_index
+    @classmethod
+    def from_dict(cls, dict):
+        ''' Initializes a chore from a dict '''
 
-		''' As of time of writing, I don't think we need this field '''
-		# self.date_to_complete = datetime.datetime.today()
+        obj = cls()
+        for key in dict.keys():
+            obj.__dict__[key] = dict[key]
 
-		self.reminder = True
-		self.completed = False
-		self.weekday_messages = ''
-		self.weekend_messages = ''
-	
-	def get_message_time(self):
-		today = datetime.datetime.today()
-		return self.weekday_messages if today.weekday() < 5 else self.weekend_messages
+        print(obj.__dict__)
+
+        obj.failure = int(obj.failure)
+        obj.weekday_messages = datetime.datetime.strptime(obj.weekday_messages,'%H:%M')
+        obj.weekend_messages = datetime.datetime.strptime(obj.weekend_messages,'%H:%M')
+
+        return obj
+
+    def to_dict(self):
+        ''' 
+            Returns a custom dictionary representation of the 
+            chore, to use to convert the chore to json
+        '''
+        weekday_messages = self.weekday_messages.strftime('%H:%M')
+        weekend_messages = self.weekend_messages.strftime('%H:%M')
+        ret = { 'name'             :   self.name,
+                'chore'   :   self.chore, 
+                'phone'   :   self.phone,
+                'email'            :   self.email,
+				'failure'	: self.failure,
+				'reminder' : self.reminder,
+				'weekday_messages' : weekday_messages,
+				'weekend_messages' : weekend_messages
+              }
+        return ret
+

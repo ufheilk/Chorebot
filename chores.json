@@ -1,0 +1,32 @@
+[
+    {   
+        "chore" : "kitchen",
+        "chore_frequency" : "1",
+        "next_active_day" : "",
+        "person" : "keaton"
+    },
+    {   
+        "chore" : "trash",
+        "chore_frequency" : "1",
+        "next_active_day" : "",
+        "person" : "joe"
+    },
+    {   
+        "chore" : "general pickup",
+        "chore_frequency" : "3",
+        "next_active_day" : "",
+        "person" : "nate"
+    },
+    {   
+        "chore" : "sweeping/mopping",
+        "chore_frequency" : "7",
+        "next_active_day" : "",
+        "person" : "ricky"
+    },
+    {   
+        "chore" : "recycling",
+        "chore_frequency" : "2",
+        "next_active_day" : "",
+        "person" : "eric"
+    }
+]
