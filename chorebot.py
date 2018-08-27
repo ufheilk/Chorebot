@@ -24,6 +24,8 @@ def send_message(person, msg):
     while True:
         try:
             messager = Messager()
+
+            # i included a field for 
             messager.message(person.address, msg)
         except:
             time.sleep(15)
@@ -32,7 +34,7 @@ def send_message(person, msg):
 
 # wait a little bit before sending msg to person
 def send_timed_message(person, msg):
-    sleep_until(person.send_time)
+    sleep_until(person.weekday_messages)
     # WAKE ME UP (WAKE ME UP INSIDE)
     send_message(person, msg)
 
@@ -60,7 +62,6 @@ today = datetime.datetime.now()
 accountability_msg = ''
 
 for chore in chores:
-    chore.check_date(today)
     if chore.active:
         # today's choredoer will be communicated to the others
         accountability_msg += chore.accountability_msg()
@@ -68,14 +69,14 @@ for chore in chores:
 for person in people:
     if person.recv_accountability:
         # dispatch a thread to send this message at the desired time
-        threading.Thread(target=send_timed_message, args=(person, person.time, accountability_msg).start())
+        threading.Thread(target=send_timed_message, args=(person, person.time(), accountability_msg).start())
 
 # send out the daily chore messages
 for chore in chores:
     if chore.active:
         person = chore.person
         msg = chore.chore_msg(random_dumbass_greeting())
-        threading.Thread(target=send_timed_message, args=(person, person.time, accountability_msg).start())
+        threading.Thread(target=send_timed_message, args=(person, person.time(), accountability_msg).start())
     
 # chorebot now enters its eternal slumber (until 10, that is)
 sleep_until('10:00PM')
@@ -102,4 +103,3 @@ for person in people:
 # serialize everything to a file
 serialize_people(people, 'people.json')
 serialize_chores(chores, 'chores.json')
-
