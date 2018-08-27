@@ -62,9 +62,9 @@ class Chore:
     def active(self):
         return self.active
 
-    def accountability_message(self):
+    def accountability_msg(self):
         return "{} is responsible for {} today.".format(self.person,self.chore)
 
-    def chore_message(self):
+    def chore_msg(self):
         return "{} {}, please do your chore: {}".format(get_random_greeting(),self.person,self.chore)
 

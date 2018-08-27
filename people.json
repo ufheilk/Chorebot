@@ -2,10 +2,10 @@
     {
         "name" : "bailey",
         "chore" : "kitchen",
-        "phone" : "5037087892",
-        "email" : "bailey.pearson@vanderbilt.edu",
+        "address" : "5037087892",
         "failure" : 0,
         "reminder" : true,
+        "recv_accountability" : true,
         "weekday_messages" : "08:00",
 		"weekend_messages" : "10:00"
     }

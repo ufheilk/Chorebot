@@ -15,6 +15,8 @@ class Person:
         obj.weekday_messages = datetime.datetime.strptime(obj.weekday_messages,'%H:%M')
         obj.weekend_messages = datetime.datetime.strptime(obj.weekend_messages,'%H:%M')
 
+		obj.chore_done = False
+
         return obj
 
     def to_dict(self):
@@ -26,9 +28,9 @@ class Person:
         weekend_messages = self.weekend_messages.strftime('%H:%M')
         ret = { 'name'             :   self.name,
                 'chore'   :   self.chore, 
-                'phone'   :   self.phone,
-                'email'            :   self.email,
+				'address' : self.address,
 				'failure'	: self.failure,
+				'recv_accountability' : self.recv_accountability,
 				'reminder' : self.reminder,
 				'weekday_messages' : weekday_messages,
 				'weekend_messages' : weekend_messages
