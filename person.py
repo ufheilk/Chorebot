@@ -9,13 +9,10 @@ class Person:
         for key in dict.keys():
             obj.__dict__[key] = dict[key]
 
-        print(obj.__dict__)
-
         obj.failure = int(obj.failure)
         obj.weekday_messages = datetime.datetime.strptime(obj.weekday_messages,'%H:%M')
         obj.weekend_messages = datetime.datetime.strptime(obj.weekend_messages,'%H:%M')
-
-		obj.chore_done = False
+        obj.chore_done = False
 
         return obj
 
@@ -37,3 +34,9 @@ class Person:
               }
         return ret
 
+    def time(self):
+        weekday = datetime.datetime.today().day() < 5
+        return self.weekday_messages if weekday else self.weekend_messages
+	
+    def __str__(self):
+        return "{},{}".format(self.name,self.chore)

@@ -15,15 +15,7 @@ CHORE_FREQUENCIES = {
 'recycling' : 2
 }
 
-def get_random_greeting():
-    random_greetings = ["Howdy","Buenas Dias","Sup fuckhead","Hey ballgobbler","Good'day",
-                        "Eat my ballsack","Hi", "Hey", "Ayy", "Ahoy", "Buongiorno", "Hello", "What's up, ATTENTION"]
-    return random.choice(random_greetings)
 
-# for each additional time a chore isn't completed, send an angrier message
-def anger_message(num_failed):
-    anger = '>'*num_failed
-    return 'You did not do your chore ' + anger + ':\\'
 
 class Chore:
 
@@ -58,9 +50,6 @@ class Chore:
                 'person'            :   self.person
               }
         return ret
-
-    def active(self):
-        return self.active
 
     def accountability_msg(self):
         return "{} is responsible for {} today.".format(self.person,self.chore)
