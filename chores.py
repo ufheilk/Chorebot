@@ -24,14 +24,14 @@ class Chore:
         index = people.index(self.person)
 
         self.person = people[(index + 1) % len(people)]
-	
-	def update_date(self):
-		if self.active:
-			self.next_active_day += CHORE_FREQUENCIES[self.chore]
-	
-	def update_chore(self):
-		self.update_person()
-		self.update_date()
+    
+    def update_date(self):
+        if self.active:
+            self.next_active_day += CHORE_FREQUENCIES[self.chore]
+    
+    def update_chore(self):
+        self.update_person()
+        self.update_date()
         
     @classmethod
     def from_dict(cls, dict):
@@ -40,7 +40,7 @@ class Chore:
         obj = cls()
         for key in dict.keys():
             obj.__dict__[key] = dict[key]
-		obj.__dict__['next_active_day'] = datetime.datetime.strptime(obj['next_active_day'],"%m/%d/%Y")
+        obj.__dict__['next_active_day'] = datetime.datetime.strptime(obj['next_active_day'],"%m/%d/%Y")
         obj.__dict__['active'] = obj.next_active_day == datetime.datetime.today()
         
         return obj

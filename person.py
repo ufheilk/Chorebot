@@ -1,6 +1,7 @@
 import datetime
 
 class Person:
+	time_format = "%H:%M"
     @classmethod
     def from_dict(cls, dict):
         ''' Initializes a chore from a dict '''
@@ -10,8 +11,8 @@ class Person:
             obj.__dict__[key] = dict[key]
 
         obj.failure = int(obj.failure)
-        obj.weekday_messages = datetime.datetime.strptime(obj.weekday_messages,'%H:%M')
-        obj.weekend_messages = datetime.datetime.strptime(obj.weekend_messages,'%H:%M')
+        obj.weekday_messages = datetime.datetime.strptime(obj.weekday_messages,Person.time_format)
+        obj.weekend_messages = datetime.datetime.strptime(obj.weekend_messages,Person.time_format)
         obj.chore_done = False
 
         return obj
@@ -21,8 +22,8 @@ class Person:
             Returns a custom dictionary representation of the 
             chore, to use to convert the chore to json
         '''
-        weekday_messages = self.weekday_messages.strftime('%H:%M')
-        weekend_messages = self.weekend_messages.strftime('%H:%M')
+        weekday_messages = self.weekday_messages.strftime(Person.time_format)
+        weekend_messages = self.weekend_messages.strftime(Person.time_format)
         ret = { 'name'             :   self.name,
                 'chore'   :   self.chore, 
 				'address' : self.address,
@@ -49,3 +50,5 @@ class Person:
     def __str__(self):
         return "{},{}".format(self.name,self.chore)
 
+	def chore_done(self):
+		pass
