@@ -37,6 +37,15 @@ class Person:
     def time(self):
         weekday = datetime.datetime.today().day() < 5
         return self.weekday_messages if weekday else self.weekend_messages
-	
+
+    def match_sender(from_field):
+        ''' Determine if from_field matches this person's valid address(es) '''
+        # TODO: Bailey pls add this valid_addresses field
+        for address in self.valid_addresses:
+            if address in from_field:
+                return True
+        return False
+
     def __str__(self):
         return "{},{}".format(self.name,self.chore)
+
