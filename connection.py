@@ -3,6 +3,7 @@ import smtplib
 import person
 
 from email.mime.text import MIMEText
+from email.utils import parseaddr
 
 class Messager:
     """Abstraction of an SMTP connection over which messages can be sent"""
@@ -38,6 +39,7 @@ class Mailbox:
                 # someone, somehow, has an email address with non-unicode chars
                 # rip, nothinng can be done, burn this email
                 pass
+            sender = parseaddr(sender)[1] # pulls just the email address
             print(sender) # now using proprietary Chorebot_Logging (TM) technology
 
             # if the current mail was sent by of people, mark their chore as done
