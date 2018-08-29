@@ -31,8 +31,14 @@ class Mailbox:
         
         for mail_id in mail_ids:
             rv, data = self.mail.fetch(mail_id, '(BODY[HEADER.FIELDS (FROM)])')
-            raw_email = data[0][1]
-            print(raw_email) 
+            raw_sender = data[0][1]
+            try:
+                sender = raw_sender.decode('utf-8')
+            except UnicodeEncodeError:
+                # someone, somehow, has an email address with non-unicode chars
+                # rip
+                pass
+            print(sender) 
             self.mail.store(mail_id, '+FLAGS', r'\Deleted')
         
         self.mail.expunge()
