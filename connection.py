@@ -36,9 +36,16 @@ class Mailbox:
                 sender = raw_sender.decode('utf-8')
             except UnicodeEncodeError:
                 # someone, somehow, has an email address with non-unicode chars
-                # rip
+                # rip, nothinng can be done, burn this email
                 pass
-            print(sender) 
+            print(sender) # now using proprietary Chorebot_Logging (TM) technology
+
+            # if the current mail was sent by of people, mark their chore as done
+            for person in people:
+                if person.match_sender(sender):
+                    # somebody has, against all odds, managed to do their chore
+                    person.chore_done = True
+
             self.mail.store(mail_id, '+FLAGS', r'\Deleted')
         
         self.mail.expunge()
