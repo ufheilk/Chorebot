@@ -34,6 +34,8 @@ def send_timed_message(person, msg):
 
 # check chorebot's email account to see who has dared message it
 def check_mail(people):
+	# why does this method have a loop?
+	# won't this stall our program?
     while True:
         try:
             box = Mailbox(people)
@@ -70,7 +72,7 @@ for chore in chores:
     if chore.active:
         person = chore.person
         msg = chore.chore_msg()
-        threading.Thread(target=send_timed_message, args=(person, person.time(), accountability_msg).start())
+        threading.Thread(target=send_timed_message, args=(person, accountability_msg).start())
     
 # chorebot now enters its eternal slumber (until 10, that is)
 sleep_until('10:00PM')

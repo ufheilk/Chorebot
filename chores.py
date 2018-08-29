@@ -1,9 +1,9 @@
 import datetime
 import random
 import json
-from chore_assignments import CHORES_TO_PEOPLE
+from chore_assignments import CHORES_TO_PEOPLE,PEOPLE_TO_CHORES
 
-from helpers import get_random_greeting
+# from helpers import get_random_greeting
 
 CHORE_OPTIONS = (
 'kitchen','sweeping/mopping','trash','general pickup','recycling'
@@ -18,9 +18,8 @@ CHORE_FREQUENCIES = {
 }
 
 class Chore:
-
     def update_person(self):
-        people = CHORES_TO_PEOPLE[self.person]
+        people = CHORES_TO_PEOPLE[self.chore]
         index = people.index(self.person)
 
         self.person = people[(index + 1) % len(people)]
@@ -40,7 +39,7 @@ class Chore:
         obj = cls()
         for key in dict.keys():
             obj.__dict__[key] = dict[key]
-        obj.__dict__['next_active_day'] = datetime.datetime.strptime(obj['next_active_day'],"%m/%d/%Y")
+        obj.__dict__['next_active_day'] = datetime.datetime.strptime(obj.next_active_day,"%m/%d/%Y")
         obj.__dict__['active'] = obj.next_active_day == datetime.datetime.today()
         
         return obj
@@ -53,7 +52,6 @@ class Chore:
         next_day = self.next_active_day.strftime('%d/%m/%y')
         ret = { 
                 'chore'             :   self.chore,
-                'chore_frequency'   :   self.chore_frequency, 
                 'next_active_day'   :   next_day,
                 'person'            :   self.person
               }
@@ -65,3 +63,5 @@ class Chore:
     def chore_msg(self):
         return "{} {}, please do your chore: {}".format(get_random_greeting(),self.person,self.chore)
 
+    def __str__(self):
+        return "[{}, Active: {}".format(self.chore,self.active)
