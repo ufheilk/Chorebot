@@ -3,10 +3,9 @@ import random
 import json
 from chore_assignments import CHORES_TO_PEOPLE,PEOPLE_TO_CHORES
 
-# from helpers import get_random_greeting
 
 CHORE_OPTIONS = (
-'kitchen','sweeping/mopping','trash','general pickup','recycling'
+    'kitchen','sweeping/mopping','trash','general pickup','recycling'
 )
 
 CHORE_FREQUENCIES = {
@@ -61,6 +60,10 @@ class Chore:
         return "{} is responsible for {} today.".format(self.person,self.chore)
 
     def chore_msg(self):
+        def get_random_greeting():
+            random_greetings = ["Howdy","Buenas Dias","Sup fuckhead","Hey ballgobbler","Good'day",'Aloha', 'Suh','Praise Data',
+                                "Eat my ballsack","Hi", "Hey", "Ayy", "Ahoy", "Buongiorno", "Hello", "What's up, ATTENTION"]
+            return random.choice(random_greetings)
         return "{} {}, please do your chore: {}".format(get_random_greeting(),self.person,self.chore)
 
     def __str__(self):

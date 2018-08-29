@@ -6,4 +6,15 @@ CHORES_TO_PEOPLE = {
     'general pickup' : ['nate','lucy']
 }
 
-# PEOPLE_TO_CHORES = {v: k for k, v in CHORES_TO_PEOPLE.items()}
+PEOPLE_TO_CHORES = {
+	'bailey' : 'kitchen',
+	'keaton' : 'kitchen' ,
+	'arturo' : 'kitchen',
+	'jordyn' : 'kitchen',
+	'eric' : 'recycling',
+	'nathan' : 'recycling',
+	'trash' : 'joe',
+	'ricky' : 'sweeping/mopping',
+	'nate' : 'general pickup',
+	'lucy' : 'general pickup'
+}
