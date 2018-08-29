@@ -28,7 +28,7 @@ def send_message(person, msg):
 
 # wait a little bit before sending msg to person
 def send_timed_message(person, msg):
-    sleep_until(person.weekday_messages)
+    sleep_until(person.time())
     # WAKE ME UP (WAKE ME UP INSIDE)
     send_message(person, msg)
 
@@ -63,7 +63,7 @@ for chore in chores:
 for person in people:
     if person.recv_accountability:
         # dispatch a thread to send this message at the desired time
-        threading.Thread(target=send_timed_message, args=(person, person.time(), accountability_msg).start())
+        threading.Thread(target=send_timed_message, args=(person, accountability_msg).start())
 
 # send out the daily chore messages
 for chore in chores:
