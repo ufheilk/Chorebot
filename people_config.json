@@ -70,5 +70,14 @@
 		"reminder": true,
 		"weekday_messages": "15:00",
 		"weekend_messages": "12:00"
+	},
+	{
+		"name": "ricky",
+		"chore": "sweeping/mopping",
+		"address": "6309674581@vzwpix.com",
+		"recv_accountability": true,
+		"reminder": true,
+		"weekday_messages": "08:00",
+		"weekend_messages": "10:00"
 	}
 ]
