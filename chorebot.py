@@ -11,10 +11,10 @@ from helpers import anger_message,initialize_chores,initialize_people
 
 # sleep until this time
 def sleep_until(time):
-	if type(time) is str:
-		time = datetime.datetime.strptime('%H:%M')
-	diff = time - datetime.datetime.now()
-	time.sleep(diff)
+    if type(time) is str:
+        time = datetime.datetime.strptime('%H:%M')
+    diff = time - datetime.datetime.now()
+    time.sleep(diff)
 
 # send msg to person immediately
 def send_message(person, msg):
@@ -37,8 +37,8 @@ def send_timed_message(person, msg):
 
 # check chorebot's email account to see who has dared message it
 def check_mail(people):
-	# why does this method have a loop?
-	# won't this stall our program?
+    # why does this method have a loop?
+    # won't this stall our program?
     while True:
         try:
             box = Mailbox(people)
@@ -47,7 +47,7 @@ def check_mail(people):
         except:
             time.sleep(15)
             continue
-    	break
+        break
 
 # First, initialize all Person and Chore objects from files
 

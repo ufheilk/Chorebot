@@ -42,11 +42,20 @@ class Mailbox:
             sender = parseaddr(sender)[1] # pulls just the email address
             print(sender) # now using proprietary Chorebot_Logging (TM) technology
 
-            # if the current mail was sent by of people, mark their chore as done
-            for person in people:
-                if person.match_sender(sender):
-                    # somebody has, against all odds, managed to do their chore
-                    person.chore_done = True
+            if sender in VALID_RECEIVING_ADDRESSES:
+                name = VALID_RECEIVING_ADDRESSES[sender]
+
+                # if the current mail was sent by of people, mark their chore as done
+                for person in people:
+                    if person.name == name:
+                        person.chore_done = True
+
+            # for person in people:
+            # 	if person.name in VALID_RECEIVING_ADDRESSES:
+
+            #     if person.match_sender(sender):
+            #         # somebody has, against all odds, managed to do their chore
+            #         person.chore_done = True
 
             self.mail.store(mail_id, '+FLAGS', r'\Deleted')
         
