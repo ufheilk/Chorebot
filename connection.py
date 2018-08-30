@@ -5,6 +5,8 @@ import person
 from email.mime.text import MIMEText
 from email.utils import parseaddr
 
+from chore_assignments import VALID_RECEIVING_ADDRESSES
+
 class Messager:
     """Abstraction of an SMTP connection over which messages can be sent"""
     def __init__(self, account, password):
@@ -13,7 +15,7 @@ class Messager:
         self.connection.starttls()
         self.connection.login(account, password)
 
-    def send(self, recipient, msg):
+    def message(self, recipient, msg):
         msg = MIMEText(msg)
         msg['From'] = self.account
         msg['To'] = recipient
