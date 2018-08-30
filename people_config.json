@@ -74,7 +74,16 @@
 	{
 		"name": "ricky",
 		"chore": "sweeping/mopping",
-		"address": "6309674581@vzwpix.com",
+		"address": "6158793004@vzwpix.com",
+		"recv_accountability": true,
+		"reminder": true,
+		"weekday_messages": "08:00",
+		"weekend_messages": "10:00"
+	},
+	{
+		"name": "arturo",
+		"chore": "kitchen",
+		"address": "5614454494@vzwpix.com",
 		"recv_accountability": true,
 		"reminder": true,
 		"weekday_messages": "08:00",
