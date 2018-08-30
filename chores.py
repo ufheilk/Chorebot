@@ -48,7 +48,7 @@ class Chore:
             Returns a custom dictionary representation of the 
             chore, to use to convert the chore to json
         '''
-        next_day = self.next_active_day.strftime('%d/%m/%y')
+        next_day = self.next_active_day.strftime('%m/%d/%y')
         ret = { 
                 'chore'             :   self.chore,
                 'next_active_day'   :   next_day,

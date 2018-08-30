@@ -1,27 +1,27 @@
 [
-    {   
-        "chore" : "kitchen",
-        "next_active_day" : "09/30/2018",
-        "person" : "keaton"
-    },
-    {   
-        "chore" : "trash",
-        "next_active_day" : "09/30/2018",
-        "person" : "joe"
-    },
-    {   
-        "chore" : "general pickup",
-        "next_active_day" : "09/30/2018",
-        "person" : "nate"
-    },
-    {   
-        "chore" : "sweeping/mopping",
-        "next_active_day" : "09/30/2018",
-        "person" : "ricky"
-    },
-    {   
-        "chore" : "recycling",
-        "next_active_day" : "09/30/2018",
-        "person" : "eric"
-    }
+	{
+		"chore": "kitchen",
+		"next_active_day": "09/30/18",
+		"person": "arturo"
+	},
+	{
+		"chore": "trash",
+		"next_active_day": "09/30/18",
+		"person": "joe"
+	},
+	{
+		"chore": "general pickup",
+		"next_active_day": "09/30/18",
+		"person": "lucy"
+	},
+	{
+		"chore": "sweeping/mopping",
+		"next_active_day": "09/30/18",
+		"person": "ricky"
+	},
+	{
+		"chore": "recycling",
+		"next_active_day": "09/30/18",
+		"person": "nathan"
+	}
 ]

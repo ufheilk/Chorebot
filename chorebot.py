@@ -7,11 +7,14 @@ import chores
 import person
 from collection import Messager, Mailbox
 
-from helpers import anger_message
+from helpers import anger_message,initialize_chores,initialize_people
 
 # sleep until this time
 def sleep_until(time):
-    pass
+	if type(time) is str:
+		time = datetime.datetime.strptime('%H:%M')
+	diff = time - datetime.datetime.now()
+	time.sleep(diff)
 
 # send msg to person immediately
 def send_message(person, msg):
@@ -44,15 +47,15 @@ def check_mail(people):
         except:
             time.sleep(15)
             continue
-    break
+    	break
 
 # First, initialize all Person and Chore objects from files
 
 # people: list of person objects
-people = initialize_people('people.json')
+people = initialize_people()
 
 # chores: list of chore objects
-chores = initialize_chores('chores.json')
+chores = initialize_chores()
 
 today = datetime.datetime.now()
 accountability_msg = ''
@@ -75,7 +78,7 @@ for chore in chores:
         threading.Thread(target=send_timed_message, args=(person, accountability_msg).start())
     
 # chorebot now enters its eternal slumber (until 10, that is)
-sleep_until('10:00PM')
+sleep_until('22:00')
 
 check_mail(people)
 
@@ -86,7 +89,7 @@ for person in people:
         
 
 # give these fools a little more time
-sleep_until('4:30AM')
+sleep_until('04:30')
 
 check_mail(people)
 
@@ -97,5 +100,5 @@ for person in people:
         person.failure += 1
 
 # serialize everything to a file
-serialize_people(people, 'people.json')
-serialize_chores(chores, 'chores.json')
+serialize_people(people)
+serialize_chores(chores)

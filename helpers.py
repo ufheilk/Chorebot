@@ -4,12 +4,12 @@ import json
 
 import random
 
-def initialize_chores(filename):
-	with open(filename) as f_obj:
+def initialize_chores():
+	with open('chores.json') as f_obj:
 		chores = json.load(f_obj)
 		return [Chore.from_dict(chore) for chore in chores]
 
-def initialize_people(filename):
+def initialize_people():
 	# get person metadata
 	try:
 		with open('people_config.json') as f_obj:
@@ -39,11 +39,11 @@ def serialize_people(people):
 		obj = {person.name : person.failure_count for person in people}
 		json.dump(obj,f)
 
-def serialize_chores(chores,filename):
+def serialize_chores(chores):
 	for chore in chores:
 		chore.update_person()
 	
-	with open(filename,'w') as f:
+	with open('chores.json','w') as f:
 		obj = [chore.to_dict() for chore in chores]
 		json.dump(obj,f)
 
