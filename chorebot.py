@@ -9,6 +9,8 @@ from collection import Messager, Mailbox
 
 from helpers import anger_message,initialize_chores,initialize_people
 
+from credentials import credentials
+
 # sleep until this time
 def sleep_until(time):
     if type(time) is str:
@@ -41,7 +43,7 @@ def check_mail(people):
     # won't this stall our program?
     while True:
         try:
-            box = Mailbox(people)
+            box = Mailbox(people,credentials.email,credentials.password)
             box.process_mail()
             box.delete_mail()
         except:
